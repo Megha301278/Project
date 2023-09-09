@@ -1,0 +1,181 @@
+version: "3.1"
+
+stories:
+
+- story: happy path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_happy
+
+- story: sad path 1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - intent: affirm
+  - action: utter_thank_you
+
+- story: sad path 2
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - intent: deny
+  - action: utter_sorry
+  - intent: goodbye
+  - action: utter_goodbye
+
+- story: account_balance
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: account_balance
+  - action: utter_account_balance
+  - intent: affirm
+  - action: utter_thank_you
+  - intent: goodbye
+  - action: utter_goodbye
+  
+- story: account_balance 2
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: account_balance
+  - action: utter_account_balance
+  - action: utter_did_that_help
+  - intent: deny
+  - action: utter_sorry
+  - intent: goodbye
+  - action: utter_goodbye
+  
+- story: make_transfer
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: make_transfer
+  - action: utter_make_transfer
+  - intent: affirm
+  - action: utter_thank_you
+  - intent: goodbye
+  - action: utter_goodbye
+
+- story: make_transfer 2
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: make_transfer
+  - action: utter_make_transfer
+  - action: utter_did_that_help
+  - intent: deny
+  - action: utter_sorry
+  - intent: goodbye
+  - action: utter_goodbye
+
+- story: show_transaction_history
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: show_transaction_history
+  - action: utter_show_transaction_history
+  - intent: affirm
+  - action: utter_thank_you
+  - intent: goodbye
+  - action: utter_goodbye 
+  
+- story: show_transaction_history 2
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: show_transaction_history
+  - action: utter_show_transaction_history
+  - action: utter_did_that_help
+  - intent: deny
+  - action: utter_sorry
+  - intent: goodbye
+  - action: utter_goodbye 
+
+- story: report_fraud
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: report_fraud
+  - action: utter_report_fraud
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_thank_you
+  - intent: goodbye
+  - action: utter_goodbye
+  
+- story: report_fraud 2
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: report_fraud
+  - action: utter_report_fraud
+  - action: utter_did_that_help
+  - intent: deny
+  - action: utter_sorry
+  - intent: goodbye
+  - action: utter_goodbye
+
+- story: block_card
+  steps:
+   - intent: greet
+   - action: utter_greet
+   - intent: block_card
+   - action: utter_block_card
+   - action: utter_did_that_help
+   - intent: affirm
+   - action: utter_thank_you
+   - intent: goodbye
+   - action: utter_goodbye
+
+- story: block_card 2
+  steps:
+   - intent: greet
+   - action: utter_greet
+   - intent: block_card
+   - action: utter_block_card
+   - action: utter_did_that_help
+   - intent: deny
+   - action: utter_sorry
+   - intent: goodbye
+   - action: utter_goodbye
+
+- story: thank_you
+  steps:
+   - intent: thank_you
+   - action: utter_thank_you
+   
+- story: can_you_help_me
+  steps: 
+  - intent: can_you_help_me
+  - action: utter_can_you_help_me
+  - intent: affirm
+  - action: utter_thank_you
+  - intent: goodbye
+  - action: utter_goodbye
+  
+- story: open_account
+  steps: 
+  - intent: open_account
+  - action: utter_open_account
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_thank_you
+  - intent: goodbye
+  - action: utter_goodbye
+  
+- story: open_account 2
+  steps: 
+  - intent: open_account
+  - action: utter_open_account
+  - action: utter_did_that_help
+  - intent: deny
+  - action: utter_sorry
+  - intent: goodbye
+  - action: utter_goodbye

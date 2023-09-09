@@ -1,0 +1,152 @@
+version: "3.1"
+
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+
+- intent: goodbye
+  examples: |
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+
+- intent: affirm
+  examples: |
+    - yes
+    - y
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+
+- intent: deny
+  examples: |
+    - no
+    - n
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+    - not really
+
+- intent: mood_great
+  examples: |
+    - perfect
+    - great
+    - amazing
+    - feeling like a king
+    - wonderful
+    - I am feeling very good
+    - I am great
+    - I am amazing
+    - I am going to save the world
+    - super stoked
+    - extremely good
+    - so so perfect
+    - so good
+    - so perfect
+
+- intent: mood_unhappy
+  examples: |
+    - my day was horrible
+    - I am sad
+    - I don't feel very well
+    - I am disappointed
+    - super sad
+    - I'm so sad
+    - sad
+    - very sad
+    - unhappy
+    - not good
+    - not very good
+    - extremly sad
+    - so saad
+    - so sad
+
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?
+
+- intent: can_you_help_me
+  examples: |
+     - can you help me
+     - can you provide me a solution 
+     
+- intent: thank_you
+  examples: |
+     - Thank you
+     - Thank you so much
+     
+- intent: open_account
+  examples: |
+     - i want to open an bank account
+     - how do i open an bank account
+     - can you give me steps to open an bank account
+    
+- intent: account_balance
+  examples: |
+    - What's my balance?
+    - How much money do I have?
+    - Can you tell me my account balance?
+    - What is my balance right now?
+    - account summary
+    - what is my current balance?
+
+- intent: make_transfer
+  examples: |
+    - I want to make a transfer.
+    - Can you help me transfer money?
+    - I need to send money to someone.
+    - How do I transfer money?
+    - send money
+    - can you make me a transfer
+    - i want to transfer money
+    
+- intent: show_transaction_history
+  examples: |
+    - What are my recent transactions?
+    - Can you show me my transaction history?
+    - How do I see my transactions?
+    - What are the transactions I made last week?
+
+- intent: report_fraud
+  examples: |
+    - I want to report fraud.
+    - There was a fraudulent transaction on my account.
+    - I need to report a suspicious activity.
+    - Someone has been using my card without my permission.
+    - I think there has been a fraudulent transaction on my account
+    - My account was used for a transaction I didn't authorize
+    - I noticed some suspicious activity on my account
+    - There are charges on my account that I didn't make
+
+- intent: block_card
+  examples: |
+    - I need to block my card.
+    - My card has been lost or stolen.
+    - I want to deactivate my card.
+    - There have been unauthorized transactions on my card. 
+    - Someone used my card without my permission

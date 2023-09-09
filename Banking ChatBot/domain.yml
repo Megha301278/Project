@@ -1,0 +1,82 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - bot_challenge
+  - account_balance
+  - make_transfer
+  - show_transaction_history
+  - report_fraud
+  - block_card
+  - can_you_help_me
+  - thank_you
+  - open_account
+
+actions:
+- action_account_balance
+- action_show_transaction_history
+- action_make_transfer
+- action_report_fraud
+- action_block_card
+- action_can_you_help
+
+responses:
+  utter_greet:
+  - text: "Hey! How are you?"
+ 
+  utter_cheer_up:
+  - text: "Here is something to cheer you up:"
+    image: "https://www.youngisthan.in/wp-content/uploads/2020/04/memes-flight-holiday.jpg"
+
+  utter_happy:
+  - text: "Great, carry on!"
+  
+  utter_sorry:
+  - text: "Sorry i didnt understood your query. Is there anything i can help you with."
+
+  utter_goodbye:
+  - text: "Bye"
+  - text: "Thank you. I hope you liked our services."
+
+  utter_iamabot:
+  - text: "I am a bot, powered by Rasa."
+  
+  utter_account_balance:
+  - text: "This is your Current Balance 70,0000"
+  
+  utter_make_transfer:
+  - text: "Whom to transfer"
+  
+  utter_show_transaction_history:
+  - text: "These are your recent transacions:\n Payment to Amazon: 8000\nPayment to Flipkart: 9000"
+  
+  utter_report_fraud:
+  - text: "We take fraud very seriously. Please provide more details about the fraudulent transaction."
+  
+  utter_can_you_help_me:
+  - text: "How can i assist you today! :)"
+
+  utter_block_card :
+  - text: "I'm sorry to hear that. I have blocked your card for security reasons. Please contact our customer service department for further assistance."
+  
+  utter_inform: 
+  - text: "Thank you for providing that information."
+  
+  utter_thank_you:
+  - text: "Your welcome. Is there anything i can help you with."
+  
+  utter_open_account:
+  - text: "Hello! I'm here to help you open a new bank account. Here are the general steps you'll need to follow:\n1.Choose a bank that you'd like to open an account with.\n2.Gather your required documents, such as identification documents (e.g. passport or driver's license), proof of address (e.g. utility bill), and your Social Security number.\n3.Decide on the type of account you want to open (e.g. checking, savings).\n4.Visit the bank in person and bring your required documents with you.\n5.Fill out an application form with your personal information and selected account features.\n6.Make an initial deposit, as most banks require this to open a new account.\n7.Wait for the bank to review your application and verify your information. This process may take a few days.\n8.Once your account is approved, the bank will provide you with your account information, such as your account number and online banking credentials.\n9.You can then start using your new account to deposit and withdraw funds, pay bills, and more.\nIf you have any questions or need further assistance, don't hesitate to ask!"
+  
+  utter_did_that_help:
+  - text: "Did that help?"
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+
