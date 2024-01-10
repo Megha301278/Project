@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+    <title>Chatbot - Megha Dalsaniya</title>
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0; /* Remove default body margin */
+}
+
+.wrapper {
+     width: 500%; /* Full width */
+    max-width: 1000px; /* Maximum width for larger screens */
+}
+
+.wrapper .title {
+    background: #007bff;
+    color: white;
+    line-height: 2.5;
+    border-radius: 5px 5px 0 0;
+    text-align: center;
+    font-size: 20px;
+}
+
+.wrapper .box {
+            border: 1px solid #efefef;
+            padding: 10px 15px;
+            height: 400px; /* Set a fixed height */
+            overflow-y: auto; /* Add scroll for overflow */
+            max-height: 400px; /* Ensure a maximum height */
+        }
+
+.wrapper .box .item {
+     display: flex;
+    float: left;
+    margin: 10px 0;
+    width: 100%; /* Expand to full width */
+}
+
+.wrapper .box .item .icon {
+    background: #007bff;
+    color: white;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 50%;
+}
+
+.wrapper .box .item .msg {
+    background: #007bff;
+    color: white;
+    border-radius: 10px;
+    margin-left: 10px;
+    max-width: calc(100% - 50px); 
+    word-wrap: break-word;
+}
+
+.wrapper .box .item .msg p {
+    padding: 10px;
+}
+
+.wrapper .box .item.right {
+    float: right;
+}
+
+.wrapper .box .item.right .msg {
+    background: #efefef;
+    color: #333;
+}
+
+.wrapper .typing-area {
+    width: 100%;
+    background: #efefef;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.wrapper .typing-area .input-field {
+    width: 100%;
+    position: relative;
+}
+
+.wrapper .typing-area .input-field input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid transparent;
+    border-radius: 3px;
+    outline: none;
+    padding-right: 70px;
+    font-family: 'Poppins', sans-serif;
+    transition: 0.3s all ease;
+}
+
+.wrapper .typing-area .input-field input:focus {
+    border-color: #007bff;
+}
+
+.wrapper .typing-area .input-field button {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    background: transparent;
+    border: 1px solid #007bff;
+    padding: 5px 10px;
+    border-radius: 3px;
+    color: #007bff;
+    outline: none;
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.3s all ease;
+}
+
+.wrapper .typing-area .input-field button:hover {
+    background: #007bff;
+    color: white;
+}
+
+.wrapper .typing-area .input-field input:valid ~ button {
+    opacity: 1;
+    pointer-events: auto;
+}
+    </style>
+
+<body>
+      <div class="wrapper">
+        <div class="title">Chatbot</div>
+        <div class="box" id="chat-messages"></div>
+
+        <div class="typing-area">
+            <div class="input-field">
+                <form id="input-form">
+                    <input type="text" id="user-input" placeholder="Type your message" required>
+                    <button type="button" onclick="handleUserInput()">Send</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        function appendMessage(sender, message) {
+            const chatMessages = document.getElementById('chat-messages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `item${sender === 'You' ? ' right' : ''}`;
+            messageDiv.innerHTML = `<div class="icon"><i class="fa fa-user"></i></div><div class="msg"><p>${message}</p></div>`;
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function handleUserInput() {
+            const userInput = document.getElementById('user-input').value.trim();
+
+            if (userInput !== '') {
+                appendMessage('You', userInput);
+
+                // Make an HTTP request to the backend
+                fetch('/get_response', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ user_input: userInput }),
+                })
+                .then(response => response.json())
+                .then(data => {
+                    // Display the response from the Chatbot
+                    appendMessage('Chatbot', data.response);
+                })
+                .catch(error => console.error('Error:', error));
+
+                document.getElementById('user-input').value = '';
+            }
+        }
+
+        document.getElementById('user-input').addEventListener('keydown', function (event) {
+            if (event.key === 'Enter') {
+                event.preventDefault(); // Prevent the default behavior (form submission)
+                handleUserInput();
+            }
+        });
+
+        // Use the submit event on the form
+        document.getElementById('input-form').addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent the default form submission
+            handleUserInput();
+        });
+    </script>
+</body>
+</html>
